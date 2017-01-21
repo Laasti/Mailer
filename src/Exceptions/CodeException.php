@@ -15,7 +15,7 @@
  *  Create Date 2012-07-25.
  *  Under the MIT license.
  *
- \***************************************************/
+ * \***************************************************/
 /**
  * Created by PhpStorm.
  * User: msowers
@@ -24,7 +24,6 @@
  */
 
 namespace Laasti\Mailer\Exceptions;
-
 
 class CodeException extends SMTPException
 {
@@ -36,5 +35,4 @@ class CodeException extends SMTPException
         }
         parent::__construct($message);
     }
-
 }

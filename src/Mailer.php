@@ -2,7 +2,6 @@
 
 namespace Laasti\Mailer;
 
-use Laasti\Mailer\Message;
 use Laasti\Mailer\Servers\ServerInterface;
 
 /**
@@ -10,7 +9,8 @@ use Laasti\Mailer\Servers\ServerInterface;
  *
  * @package Laasti
  */
-class Mailer{
+class Mailer
+{
     /**
      * Server Class
      * @var ServerInterface
@@ -26,7 +26,8 @@ class Mailer{
     /**
      * construct function
      */
-    public function __construct(ServerInterface $server=null){
+    public function __construct(ServerInterface $server = null)
+    {
         $this->server = $server;
         $this->message = new Message();
     }
@@ -49,14 +50,15 @@ class Mailer{
         $this->message = new Message();
         return $this;
     }
-    
+
     /**
      * set mail from
      * @param string $name
      * @param string $email
      * @return $this
      */
-    public function setFrom($name, $email){
+    public function setFrom($name, $email)
+    {
         $this->message->setFrom($name, $email);
         return $this;
     }
@@ -67,7 +69,8 @@ class Mailer{
      * @param string $email
      * @return $this
      */
-    public function setFakeFrom($name, $email){
+    public function setFakeFrom($name, $email)
+    {
         $this->message->setFakeFrom($name, $email);
         return $this;
     }
@@ -90,7 +93,8 @@ class Mailer{
      * @param string $email
      * @return $this
      */
-    public function setTo($name, $email){
+    public function setTo($name, $email)
+    {
         $this->message->addTo($name, $email);
         return $this;
     }
@@ -101,7 +105,8 @@ class Mailer{
      * @param string $email
      * @return $this
      */
-    public function addTo($name, $email){
+    public function addTo($name, $email)
+    {
         $this->message->addTo($name, $email);
         return $this;
     }
@@ -111,7 +116,8 @@ class Mailer{
      * @param string $subject
      * @return $this
      */
-    public function setSubject($subject){
+    public function setSubject($subject)
+    {
         $this->message->setSubject($subject);
         return $this;
     }
@@ -132,7 +138,8 @@ class Mailer{
      * @param string $body
      * @return $this
      */
-    public function setBody($body){
+    public function setBody($body)
+    {
         $this->message->setBody($body);
         return $this;
     }
@@ -144,7 +151,8 @@ class Mailer{
      * @return $this
      * @internal param string $attachment
      */
-    public function setAttachment($name, $path){
+    public function setAttachment($name, $path)
+    {
         $this->message->addAttachment($name, $path);
         return $this;
     }
@@ -156,10 +164,12 @@ class Mailer{
      * @return $this
      * @internal param string $attachment
      */
-    public function addAttachment($name, $path){
+    public function addAttachment($name, $path)
+    {
         $this->message->addAttachment($name, $path);
         return $this;
     }
+
     /**
      * set mail charset
      * @param string $charset
@@ -175,9 +185,8 @@ class Mailer{
      *  Send the message...
      * @return boolean
      */
-    public function send($message = null){
+    public function send($message = null)
+    {
         return $this->server->send($message ?: $this->message);
     }
-
 }
-

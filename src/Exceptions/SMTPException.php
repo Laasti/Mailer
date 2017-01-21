@@ -15,7 +15,7 @@
  *  Create Date 2012-07-25.
  *  Under the MIT license.
  *
- \***************************************************/
+ * \***************************************************/
 /**
  * Created by PhpStorm.
  * User: msowers
@@ -31,5 +31,4 @@ class SMTPException extends \Exception
     {
         parent::__construct($message);
     }
-
 }

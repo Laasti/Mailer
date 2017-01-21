@@ -25,11 +25,11 @@ class NullServer implements ServerInterface
         $this->logger = $logger;
     }
 
-    public function send(Message $message) {
+    public function send(Message $message)
+    {
 
-        $this->logger && $this->logger->addDebug('Should have sent: '. $message->getHeader('To'));
+        $this->logger && $this->logger->addDebug('Should have sent: ' . $message->getHeader('To'));
 
         return true;
     }
-
 }

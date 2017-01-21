@@ -1,70 +1,81 @@
-# Laasti/mailer
-=======
+# Laasti / Mailer
 
-A lightweight mail sender, credits to https://github.com/txthinking/Mailer for the inspiration and SMTP server.
+[![Latest Version on Packagist][ico-version]][link-packagist]
+[![Software License][ico-license]](LICENSE.md)
+[![Build Status][ico-travis]][link-travis]
+[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
+[![Quality Score][ico-code-quality]][link-code-quality]
+[![Total Downloads][ico-downloads]][link-downloads]
 
-## Installation
+This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
+PSRs you support to avoid any confusion with users and contributors.
+
+## Structure
+
+If any of the following are applicable to your project, then the directory structure should follow industry best practises by being named the following.
 
 ```
+bin/        
+config/
+src/
+tests/
+vendor/
+```
+
+
+## Install
+
+Via Composer
+
+``` bash
 $ composer require laasti/mailer
 ```
 
 ## Usage
 
-```php
-<?php
-use Laasti\Mailer;
-$server = new Servers\SMTP($logger, $host, $username, $password, $port);
-$ok = (new Mailer($server))
-    ->setFrom('You', '') //your name, your email
-    ->setFakeFrom('heelo', 'bot@fake.com') // if u want, a fake name, a fake email
-    ->addTo('Cloud', 'cloud@txthinking.com')
-    ->setSubject('Test Mailer')
-    ->setBody('Hi, I <strong>love</strong> you.')
-    ->addAttachment('host', '/etc/hosts')
-    ->send();
-var_dump($ok);
+``` php
+$skeleton = new League\Skeleton();
+echo $skeleton->echoPhrase('Hello, League!');
 ```
-OR
-```php
-<?php
-use Laasti\Mailer\Servers\SMTP;
-use \Laasti\Mailer\Message;
-use \Monolog\Logger;
 
-$server = new SMTP($logger, $host, $username, $password, $port);
-$mailer = new Mailer($server);
+## Change log
 
-$message = new Message();
-$message->setFrom('Tom', 'your@mail.com') // your name, your email
-    ->setFakeFrom('heelo', 'bot@fake.com') // if u want, a fake name, a fake email
-    ->addTo('Cloud', 'cloud@txthinking.com')
-    ->setSubject('Test Mailer')
-    ->setBody('<h1>For test</h1>')
-    ->addAttachment('host', '/etc/hosts');
+Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
-$ok = $mailer->send($message);
-var_dump($ok);
+## Testing
+
+``` bash
+$ composer test
 ```
-A number of servers are available: FileServer (prints message to file), Mail, NullServer (does nothing), SMTP, Sendmail
-
 
 ## Contributing
 
-1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -am 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details.
 
-## History
+## Security
 
-See CHANGELOG.md for more information.
+If you discover any security related issues, please email contact@nebulousweb.com instead of using the issue tracker.
 
 ## Credits
 
-Author: Sonia Marquette (@nebulousGirl)
+- [Sonia Marquette][link-author]
+- [All Contributors][link-contributors]
 
 ## License
 
-Released under the MIT License. See LICENSE file.
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
+[ico-version]: https://img.shields.io/packagist/v/laasti/mailer.svg?style=flat-square
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/laasti/mailer/master.svg?style=flat-square
+[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/laasti/mailer.svg?style=flat-square
+[ico-code-quality]: https://img.shields.io/scrutinizer/g/laasti/mailer.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/laasti/mailer.svg?style=flat-square
+
+[link-packagist]: https://packagist.org/packages/laasti/mailer
+[link-travis]: https://travis-ci.org/laasti/mailer
+[link-scrutinizer]: https://scrutinizer-ci.com/g/laasti/mailer/code-structure
+[link-code-quality]: https://scrutinizer-ci.com/g/laasti/mailer
+[link-downloads]: https://packagist.org/packages/laasti/mailer
+[link-author]: https://github.com/nebulousGirl
+[link-contributors]: ../../contributors
