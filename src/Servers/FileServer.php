@@ -27,21 +27,21 @@ class FileServer implements ServerInterface
         $this->logger = $logger;
     }
 
-    public function send(Message $message) {
+    public function send(Message $message)
+    {
 
         if (!is_writable($this->filepath)) {
-            throw new \Laasti\Mailer\Exceptions\FileServerException('The message destination directory is not writeable: '.$this->filepath);
+            throw new \Laasti\Mailer\Exceptions\FileServerException('The message destination directory is not writeable: ' . $this->filepath);
         }
         $in = $message->toString();
-        $file = addslashes($this->filepath.'/'.date('Y-m-d H-i-s').'-'.md5($in).'.txt');
+        $file = addslashes($this->filepath . '/' . date('Y-m-d H-i-s') . '-' . md5($in) . '.txt');
 
         if (!file_put_contents($file, $in)) {
-            throw new \Laasti\Mailer\Exceptions\FileServerException('Could not write message file to disk: '.$file);
+            throw new \Laasti\Mailer\Exceptions\FileServerException('Could not write message file to disk: ' . $file);
         }
 
-        $this->logger && $this->logger->addDebug('Mail saved: '. $file);
+        $this->logger && $this->logger->addDebug('Mail saved: ' . $file);
 
         return true;
     }
-
 }

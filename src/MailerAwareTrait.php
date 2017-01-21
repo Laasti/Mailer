@@ -5,7 +5,7 @@ namespace Laasti\Mailer;
 trait MailerAwareTrait
 {
     protected $mailer;
-    
+
     /**
      * @returns Mailer
      */
@@ -13,9 +13,9 @@ trait MailerAwareTrait
     {
         return $this->mailer;
     }
-    
+
     /**
-     * 
+     *
      * @param \Laasti\Mailer\Mailer $mailer
      */
     public function setMailer(Mailer $mailer)

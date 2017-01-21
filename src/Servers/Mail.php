@@ -8,9 +8,9 @@
 
 namespace Laasti\Mailer\Servers;
 
-use Psr\Log\LoggerInterface;
 use Laasti\Mailer\Exceptions\SendException;
 use Laasti\Mailer\Message;
+use Psr\Log\LoggerInterface;
 
 /**
  * Description of Mail
@@ -26,13 +26,15 @@ class Mail implements ServerInterface
         $this->logger = $logger;
     }
 
-    public function send(Message $message) {
+    public function send(Message $message)
+    {
         // most documentation of sendmail using the "-f" flag lacks a space after it, however
         // we've encountered servers that seem to require it to be in place.
-        $sent = mail($message->getHeader('To'), $message->getSubject(), $message->getEncodedBody(true), $message->headersToString(), '-f '.$message->getHeader('Return-Path'));
+        $sent = mail($message->getHeader('To'), $message->getSubject(), $message->getEncodedBody(true),
+            $message->headersToString(), '-f ' . $message->getHeader('Return-Path'));
 
         if ($sent) {
-            $this->logger && $this->logger->addDebug('Sent: '. $message->getHeader('To'));
+            $this->logger && $this->logger->addDebug('Sent: ' . $message->getHeader('To'));
         } else {
             throw new SendException('The message could not be delivered using mail().');
         }
